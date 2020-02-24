@@ -29,12 +29,12 @@ PlotGrad <- function(grad){
   #group the phase A and B
   phase.grp <- data.frame(phase.AB,comp);
 
-  grad.plot <- ggplot(phase.grp) +
-    aes(x = phase.grp[,1] , y = phase.grp[,2], fill = phase.grp[,3]) +
-    geom_area(size = 10L, alpha = 0.7) +
-    scale_fill_manual(values=c("#332382", "#CD0000")) +
-    labs(x = "Time", y = " ", fill = " ") +
-    theme_minimal(base_line_size = 1.1) +
-    theme(legend.position = "top", axis.text=element_text(size=14), axis.title.x = element_text(size=18));
-  return(grad.plot)
+  grad.plot <- ggplot2::ggplot(phase.grp) +
+    ggplot2::aes(x = phase.grp[,1] , y = phase.grp[,2], fill = phase.grp[,3]) +
+    ggplot2::geom_area(size = 10L, alpha = 0.7) +
+    ggplot2::scale_fill_manual(values=c("#332382", "#CD0000")) +
+    ggplot2::labs(x = "Time", y = " ", fill = " ") +
+    ggplot2::theme_minimal(base_line_size = 1.1) +
+    ggplot2::theme(legend.position = "top", axis.text=ggplot2::element_text(size=14), axis.title.x = element_text(size=18));
+  return(grad.plot);
 }

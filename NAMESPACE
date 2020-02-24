@@ -3,6 +3,7 @@
 export(BatchOrganize)
 export(GradCalc)
 export(GradInput)
+export(GroupOrganize)
 export(PlotGrad)
 importFrom(ggplot2,aes)
 importFrom(ggplot2,element_text)

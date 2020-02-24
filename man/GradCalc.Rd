@@ -4,10 +4,10 @@
 \alias{GradCalc}
 \title{Gradient mobile phase calculation}
 \usage{
-GradCalc(grad, runs, over = 15)
+GradCalc(x, runs, over = 15)
 }
 \arguments{
-\item{grad}{data frame, gradient information previously imported with GradInput function.}
+\item{x}{data frame, gradient information previously imported with GradInput function.}
 
 \item{runs}{numeric, number of chromatographic runs in the batch.}
 

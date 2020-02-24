@@ -1,40 +1,36 @@
-#' Plot Gradiente profile
+#' Organize the samples in folders (by group)
 #'
-#' Plot the LC gradient profile.
+#' Put the spectra of the sample files into their respective batch folder. The .csv file must be the "name" and "batch" column.
+#' The values in the column name need to have the same name of the sample files including the pattern (e.g.: .mzML, .CDF, .mzXML). Before perform this function, use the "setwd()" to the folder where the files are.
 #'
-#' @param grad data frame, gradient information previously imported with GradInput function.
+#' @param x path to a .csv file with the experiment metadata.
+#' @param remove logical value (FALSE by default), if TRUE the files will be deleted after the sorting.
 #'
-#' @return The graph of gradient profile.
+#' @return  Directories will be created (by batch) and the files will be placed according to the metadata information.
 #'
-#' @example PlotGrad(grad)
+#' @example BatchOrganize(x, remove = TRUE)
 #'
-#' @importFrom ggplot2 ggplot
-#' @importFrom ggplot2 aes
-#' @importFrom ggplot2 geom_area
-#' @importFrom ggplot2 scale_fill_manual
-#' @importFrom ggplot2 labs
-#' @importFrom ggplot2 theme_minimal
-#' @importFrom ggplot2 theme
-#' @importFrom ggplot2 element_text
+#' @importFrom utils read.csv
 #'
 #' @export
-PlotGrad <- function(grad){
-  #create the group composition
-  comp <- c(rep("A", nrow(grad)),rep("B", nrow(grad)));
-  #select the phase A
-  phase.A <- cbind(grad[,1], grad[,3]);
-  phase.B <- cbind(grad[,1], grad[,4]);
-  #merge the phases A and B
-  phase.AB <- rbind(phase.A,phase.B);
-  #group the phase A and B
-  phase.grp <- data.frame(phase.AB,comp);
+#'
+GroupOrganize <- function(x, remove = FALSE){
+  metadata <- read.csv(x, header = TRUE, as.is = TRUE);
+  snames <- metadata$name;
+  glabel <- metadata$group;
+  dnames <- levels(as.factor(glabel));
+  lapply(dnames, dir.create); # create the folders
 
-  grad.plot <- ggplot(phase.grp) +
-    aes(x = phase.grp[,1] , y = phase.grp[,2], fill = phase.grp[,3]) +
-    geom_area(size = 10L, alpha = 0.7) +
-    scale_fill_manual(values=c("#332382", "#CD0000")) +
-    labs(x = "Time", y = " ", fill = " ") +
-    theme_minimal(base_line_size = 1.1) +
-    theme(legend.position = "top", axis.text=element_text(size=14), axis.title.x = element_text(size=18));
-  return(grad.plot)
+  for (i in 1:length(dnames)){ # for loop
+    tmp <- dnames[i];
+    select <- glabel == tmp;
+    selfiles <- snames[select];
+    file.copy(selfiles, tmp);
+  }
+  if (remove == TRUE){
+    lapply(snames, file.remove);
+    return("All samples were sorted in their group folders and deleted from origin!"); # remove files after copying
+  }else{
+    return("All samples were sorted in their group folders!");
+  }
 }

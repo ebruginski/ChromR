@@ -4,12 +4,12 @@
 \alias{BatchOrganize}
 \title{Organize the samples in folders (by batch)}
 \usage{
-BatchOrganize(metadata, remove)
+BatchOrganize(x, remove = FALSE)
 }
 \arguments{
-\item{metadata}{path to a .csv file with the experiment metadata.}
+\item{x}{path to a .csv file with the experiment metadata.}
 
-\item{remove}{logical value (TRUE by default), if TRUE the files will be deleted after the sorting.}
+\item{remove}{logical value (FALSE by default), if TRUE the files will be deleted after the sorting.}
 }
 \value{
 Directories will be created (by batch) and the files will be placed according to the metadata information.
