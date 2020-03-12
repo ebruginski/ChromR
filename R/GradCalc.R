@@ -31,8 +31,8 @@ GradCalc <- function(x, runs, over = 15){
 
   #mobile phase overage to secure the LC system
   over <- over/100;
-  total.A <- round(total.A.tmp+(total.A.tmp*over),0);
-  total.B <- round(total.B.tmp+(total.B.tmp*over),0);
+  total.A <- round(total.A.tmp+(total.A.tmp*over),1);
+  total.B <- round(total.B.tmp+(total.B.tmp*over),1);
 
   #get the total batch time
   run.time <- tail(x,1);
@@ -42,7 +42,7 @@ GradCalc <- function(x, runs, over = 15){
 
   #list of results
   result <- list(total.A, total.B, batch.time);
-  names(result) <- c("Total of solvent A (ml):", "Total of solvent B (ml):", "Total batch time:");
+  names(result) <- c("solvent_A", "solvent_B", "total_time");
 
   return(print(result));
 }
