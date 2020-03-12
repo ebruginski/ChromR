@@ -12,4 +12,5 @@ Depends: R (>= 2.10)
 RoxygenNote: 7.0.2.9000
 Imports:
     ggplot2,
-    lubridate
+    lubridate,
+    stats
