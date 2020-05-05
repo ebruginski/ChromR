@@ -21,6 +21,12 @@ Directories will be created by batch or class and the files will be placed accor
 \description{
 Organize files into folders by batch or class.
 }
+\examples{
+\dontrun{
+FileOrganizer(x, filetype = c(".mzML", ".mzXML", ".CDF", ".raw", ".txt"), by= c("batch", "class"), remove = FALSE)
+}
+
+}
 \author{
 Estevan Bruginski \email{estevan.bruginski@ufpr.br}
 Universidade Federal do Paraná
