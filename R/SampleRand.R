@@ -8,11 +8,17 @@
 #'
 #' @return A randomized sample list.
 #'
-#' @example SampleRand (x, gnumber = 3, gnames = c("g1", "g2, "g3"))
-#'
+#' @examples
+#' \dontrun{
+#' SampleRand (x, gnumber = 3, gnames = c("g1", "g2", "g3"))
+#' }
 #' @importFrom stats na.omit
 #'
 #' @export
+#' @author Estevan Bruginski \email{estevan.bruginski@ufpr.br}
+#' Universidade Federal do Paraná
+#' License: MIT + file LICENSE
+#'
 SampleRand <- function(x, gnumber, gnames){
   if (gnumber == 2){
     g1 <- x$id[which(x$groups == gnames[1])];
