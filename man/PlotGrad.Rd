@@ -4,14 +4,23 @@
 \alias{PlotGrad}
 \title{Plot Gradiente profile}
 \usage{
-PlotGrad(grad)
+PlotGrad(x)
 }
 \arguments{
-\item{grad}{data frame, gradient information previously imported with GradInput function.}
+\item{x}{data frame, gradient information previously imported with GradInput function.}
 }
 \value{
 The graph of gradient profile.
 }
 \description{
 Plot the LC gradient profile.
+}
+\examples{
+\dontrun{PlotGrad(x)}
+
+}
+\author{
+Estevan Bruginski \email{estevan.bruginski@ufpr.br}
+Universidade Federal do Paraná
+License: MIT + file LICENSE
 }
