@@ -2,39 +2,55 @@
 #'
 #' Plot the LC gradient profile.
 #'
-#' @param grad data frame, gradient information previously imported with GradInput function.
+#' @param x data frame, gradient information previously imported with GradInput function.
 #'
 #' @return The graph of gradient profile.
 #'
-#' @example PlotGrad(grad)
+#' @examples
+#' \dontrun{PlotGrad(x)}
 #'
 #' @importFrom ggplot2 ggplot
 #' @importFrom ggplot2 aes
-#' @importFrom ggplot2 geom_area
-#' @importFrom ggplot2 scale_fill_manual
 #' @importFrom ggplot2 labs
-#' @importFrom ggplot2 theme_minimal
-#' @importFrom ggplot2 theme
+#' @importFrom ggplot2 geom_area
+#' @importFrom ggplot2 scale_x_continuous
+#' @importFrom ggplot2 scale_y_continuous
 #' @importFrom ggplot2 element_text
+#' @importFrom ggplot2 element_rect
 #'
 #' @export
-PlotGrad <- function(grad){
+#' @author Estevan Bruginski \email{estevan.bruginski@ufpr.br}
+#' Universidade Federal do Paraná
+#' License: MIT + file LICENSE
+#'
+PlotGrad <- function(x) {
   #create the group composition
-  comp <- c(rep("A", nrow(grad)),rep("B", nrow(grad)));
-  #select the phase A
-  phase.A <- cbind(grad[,1], grad[,3]);
-  phase.B <- cbind(grad[,1], grad[,4]);
-  #merge the phases A and B
-  phase.AB <- rbind(phase.A,phase.B);
-  #group the phase A and B
-  phase.grp <- data.frame(phase.AB,comp);
+  comp <- c(rep("A", nrow(x)), rep("B", nrow(x)));
 
-  grad.plot <- ggplot2::ggplot(phase.grp) +
-    ggplot2::aes(x = phase.grp[,1] , y = phase.grp[,2], fill = phase.grp[,3]) +
-    ggplot2::geom_area(size = 10L, alpha = 0.7) +
-    ggplot2::scale_fill_manual(values=c("#332382", "#CD0000")) +
-    ggplot2::labs(x = "Time", y = " ", fill = " ") +
-    ggplot2::theme_minimal(base_line_size = 1.1) +
-    ggplot2::theme(legend.position = "top", axis.text=ggplot2::element_text(size=14), axis.title.x = element_text(size=18));
-  return(grad.plot);
+  #select the phase A
+  phase.A <- cbind(x[, 1], x[, 3]);
+
+  phase.B <- cbind(x[, 1], x[, 4]);
+
+  # merge the phases A and B
+  phase.AB <- rbind(phase.A, phase.B);
+
+  # group the phase A and B
+  phase.grp <- data.frame(phase.AB, comp);
+
+  # graph
+  p <-
+    ggplot2::ggplot(phase.grp,
+                    ggplot2::aes(x = phase.grp[, 1] , y = phase.grp[, 2],  fill = phase.grp[, 3])) +
+    ggplot2::labs(x = "Time (min)", y = "Composition (%)", fill = "") +
+    ggplot2::geom_area(alpha = 0.7) +
+    ggplot2::theme(text = ggplot2::element_text(size = 16), panel.border = ggplot2::element_rect(fill = .1, colour = "black")) +
+    ggplot2::scale_x_continuous(breaks = round(seq(min(phase.grp[, 1]), max(phase.grp[, 1]),
+                                                   by = 5), 1), expand = c(0, 0)) +
+    ggplot2::scale_y_continuous(breaks = round(seq(min(10), max(100), by = 10), 1),
+                                expand = c(0, 0)) +
+    ggplot2::scale_fill_manual(values = c("#3c8dbc", "#9F0607"))
+
+
+  return(p)
 }
