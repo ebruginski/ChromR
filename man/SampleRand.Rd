@@ -19,3 +19,13 @@ A randomized sample list.
 \description{
 Plot the LC gradient profile.
 }
+\examples{
+\dontrun{
+SampleRand (x, gnumber = 3, gnames = c("g1", "g2", "g3"))
+}
+}
+\author{
+Estevan Bruginski \email{estevan.bruginski@ufpr.br}
+Universidade Federal do Paraná
+License: MIT + file LICENSE
+}
