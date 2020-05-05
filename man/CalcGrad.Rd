@@ -4,7 +4,7 @@
 \alias{CalcGrad}
 \title{Gradient mobile phase calculation}
 \usage{
-CalcGrad(x, runs, over = 15)
+CalcGrad(x, runs, over = 15, plot = TRUE)
 }
 \arguments{
 \item{x}{Datapath character, gradient profile in .csv format}
@@ -12,10 +12,22 @@ CalcGrad(x, runs, over = 15)
 \item{runs}{Numeric, number of chromatographic runs in the batch.}
 
 \item{over}{Numeric, overage of mobile phase to keep the system secure. The default value is 15\%. Need to be set according with your system.}
+
+\item{plot}{Logical, plot the gradient profile, TRUE by default.}
 }
 \value{
 a list with the total batch time and the amount, in ml, of solvents A and B.
 }
 \description{
 Calculate the volume of A and B mobile phases on a LC gradient.
+}
+\examples{
+\dontrun{
+GradCalc(x, runs = 15, over = 15, plot = TRUE)
+}
+}
+\author{
+Estevan Bruginski \email{estevan.bruginski@ufpr.br}
+Universidade Federal do Paraná
+License: MIT + file LICENSE
 }
