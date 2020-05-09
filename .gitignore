@@ -2,5 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
+.Rmd
 packrat/lib*/
 inst/doc

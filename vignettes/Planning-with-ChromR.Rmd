@@ -1,0 +1,104 @@
+---
+title: "Planning with ChromR"
+package: "ChromR"
+output: 
+  BiocStyle::html_document:
+    toc: true
+    toc_float: true
+vignette: >
+  %\VignetteIndexEntry{Planning with ChromR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteDepends{ChromR,BiocStyle}
+  %\VignetteKeywords{mass spectrometry, LC-MS, chromatography, metabolomics}
+---
+
+```{r biocstyle, echo = FALSE, results = "asis"}
+BiocStyle::markdown()
+```
+**Package**: `r Githubpkg("ebruginski/ChromR")`<br />
+**Author**: Estevan Bruginski<br />
+**e-mail**: estevan.bruginski@ufpr.br<br /> 
+**Modified**: `r file.info("Planning-with-ChromR.Rmd")$mtime`<br />
+**Compiled**: `r date()`
+
+# Introduction
+
+The `r Githubpkg("ebruginski/ChromR")` package brings some functions to help analysts, Ph.D. students and technicians to plan and organize LC analyses. The functions are separated into 2 main sections, Pre-analyse and Post-analyse. In Pre-analyse, the functions will help to randomize the injections order,  calculation of the quantity of mobile phase and the spent time of batches. The Post-analyse functions will help to organize the obtained files according to their respective batches or classes, avoiding human error. 
+
+# Data preparation
+
+```{r setup}
+library(ChromR)
+```
+
+
+# How to use
+
+## Sample Randomization
+
+## Gradient Calculation
+
+## File Organization
+
+The `FileOrganizer` function is used to create folders and to move MS files to their respective batch or class folders. This function uses metadata generated from sample list.
+First, we need to generate a .csv file, this file needs to have the following column names: Samples, Class, Order, and Batch, this will be the standard .csv metadata layout for all functions in the `r Githubpkg("ebruginski/ChromR")` package.
+
+
+```{r include=FALSE}
+library(kableExtra)
+metadata_ex <- read.csv("D:/My_projects/ChromR/data-raw/metadata-ex.csv", header = T)
+```
+
+```{r table1, echo=FALSE, results="asis"}
+kable(metadata_ex, caption = "Example of metadata layout",align = "c", format = "html") %>%
+  kable_styling(
+    bootstrap_options = "responsive",
+    full_width = F,
+    position = "left")
+```
+
+
+**Example 1:** How to use the `FileOrganizer` function to sort the MS files by batch.
+
+```{r file-organize-batch, eval=FALSE, echo=TRUE, message=FALSE, warning=FALSE}
+## Load the package
+library(ChromR)
+## Set the path to where are the MS files
+setwd("D:/My_projects/ChromR/data/")
+## Set the path to metadata.csv
+metadata <- "D:/My_projects/ChromR/data/metadata.csv"
+## Organize the files into batch folders
+FileOrganizer(metadata,
+           filetype = ".mzML",
+           by = "Batch",
+           remove = FALSE)
+
+```
+```{r message-batch, echo=FALSE}
+message('All files have been moved to their respective folders.')
+```
+
+**Example 2:** How to use the `FileOrganizer` function to sort the MS files by class.
+
+```{r file-organize-class, eval=FALSE, echo=TRUE, message=FALSE, warning=FALSE}
+## Load the package
+library(ChromR)
+## Set the path to where are the MS files
+setwd("D:/My_projects/ChromR/data/")
+## Set the path to metadata.csv
+metadata <- "D:/My_projects/ChromR/data/metadata.csv"
+## Organize the files into class folders
+FileOrganizer(metadata,
+           filetype = ".mzML",
+           by = "Class",
+           remove = FALSE)
+
+```
+```{r message-class, echo=FALSE}
+message('All files have been moved to their respective folders.')
+```
+
+The argument `filetype` can be modified to any kind of file pattern like ".mzXML", ".netCDF", ".CDF", ".raw", ".mgf", ".txt", etc.; according to the file extension that you want to sort. 
+
+To save space on the hard disk we can set the `remove = TRUE`, this option will remove the files from the original folder. After that, we can use packages like `r Githubpkg("xia-lab/MetaboAnalystR")` and `r Biocpkg("xcms")` to perform the pre-processing steps of LC-MS raw data. These packages use the information of the subfolders to build the groups/classes to perform the statistical analysis.
