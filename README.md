@@ -2,7 +2,7 @@ ChromR
 ======
 
 <p align="center">
-<img src="https://github.com/ebruginski/ChromR/blob/master/docs/logo.png" width="200" height="200">
+<img src="https://github.com/ebruginski/ChromR/blob/master/docs/logo.png" weight="200" height = "231.8">
 </p>
 
 Description
