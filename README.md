@@ -63,4 +63,33 @@ rsamplelist <- SampleRand(x = samplelist, gnumber = 2, gnames = c("disease", "he
 
 <b>Mobile phase and time calculation:</b>
 
+x = path to the gradient profile .csv file
+
+<p align="left">
+<img src="https://github.com/ebruginski/ChromR/blob/master/docs/ex_gradient_prof.png">
+</p>
+
+runs = number of the runs.
+
+over = overage of mobile phase to keep the system secure (%).
+
+plot = plot the gradient profile.
+```r
+library(ChromR)
+
+gradientprof <- "/example/gradientprofile.csv"
+
+GradCalc(x = gradientprof, runs = 15, over = 15, plot = TRUE)
+```
+
+
 ### Post-analyse functions
+
+
+
+
+
+
+
+
+
