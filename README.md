@@ -10,10 +10,10 @@ Description
 
 The ChromR package brings some functions to help analysts,
 Ph.D. students and technicians to plan and organize LC analyses. The
-functions are separated into 2 main sections, Pre-analyse and
-Post-analyse. In Pre-analyse, the functions will help to randomize the
+functions are separated into 2 main sections, Pre-analysis and
+Post-analysis. In Pre-analysis, the functions will help to randomize the
 injections order, calculation of the quantity of mobile phase and the
-spent time of batches. The Post-analyse functions will help to organize
+spent time of batches. The Post-analysis functions will help to organize
 the obtained files according to their respective batches or classes,
 avoiding human error.
 
@@ -35,7 +35,7 @@ install_github("ebruginski/ChromR")
 Overview
 --------
 
-### Pre-analyse functions
+### Pre-analysis functions
 
 <b>Sample Randomization:</b>
 
@@ -84,7 +84,7 @@ gradientprof <- "/example/gradientprofile.csv"
 GradCalc(x = gradientprof, runs = 15, over = 15, plot = TRUE)
 ```
 
-### Post-analyse functions
+### Post-analysis functions
 
 <b>Files organizer:</b>
 
