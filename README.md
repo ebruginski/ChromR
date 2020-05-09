@@ -20,14 +20,47 @@ avoiding human error.
 Getting Started
 ---------------
 
-### 1. Install package dependencies
+### a) Install package dependencies
 
 ``` r
 install.packages(c("devtools","lubridate", "ggplot2", "progress"))
 ```
 
-### 2. Install the package
+### b) Install the package
 
 ``` r
 install_github("ebruginski/ChromR")
 ```
+
+Overview
+--------
+
+### Pre-analyse functions
+
+<b>Sample Randomization:</b>
+
+x = The dataframe for this function need to have: first column as
+samples id and the second column as sample groups.
+
+gnumber = number of groups in the sample, need to be between 2 and 6.
+
+gnames = names of the groups, need to be the same of the input data
+frame.
+
+<sub>Example:</sub>
+
+``` r
+library(ChromR)
+
+## Input the sample list
+
+samplelist <- read.csv("/example/samplelist.csv")
+
+## Run the randomization function
+
+rsamplelist <- SampleRand(x = samplelist, gnumber = 2, gnames = c("disease", "health"))
+```
+
+<b>Mobile phase and time calculation:</b>
+
+### Post-analyse functions
