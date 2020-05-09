@@ -63,7 +63,7 @@ rsamplelist <- SampleRand(x = samplelist, gnumber = 2, gnames = c("disease", "he
 
 <b>Mobile phase and time calculation:</b>
 
-x = path to the gradient profile .csv file, format the profile as below.
+x = path to the gradient profile .csv file, format the header as below.
 
 <p align="left">
 <img src="https://github.com/ebruginski/ChromR/blob/master/docs/ex_gradient_prof.png">
@@ -88,7 +88,7 @@ GradCalc(x = gradientprof, runs = 15, over = 15, plot = TRUE)
 
 <b>Files organizer:</b>
 
-x = path to the samplelist .csv file, format the metadata as below.
+x = path to the samplelist .csv file, format the header metadata as below.
 
 <p align="left">
 <img src="https://github.com/ebruginski/ChromR/blob/master/docs/ex_samplelist.png">
