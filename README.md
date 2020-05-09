@@ -40,14 +40,14 @@ Overview
 <b>Sample Randomization:</b>
 
 x = The dataframe for this function need to have: first column as
-samples id and the second column as sample groups.
+samples id and the second column as sample class.
 
 gnumber = number of groups in the sample, need to be between 2 and 6.
 
 gnames = names of the groups, need to be the same of the input data
 frame.
 
-<sub>Example:</sub>
+<u>Example:</u>
 
 ``` r
 library(ChromR)
@@ -63,7 +63,7 @@ rsamplelist <- SampleRand(x = samplelist, gnumber = 2, gnames = c("disease", "he
 
 <b>Mobile phase and time calculation:</b>
 
-x = path to the gradient profile .csv file
+x = path to the gradient profile .csv file, format the profile as below.
 
 <p align="left">
 <img src="https://github.com/ebruginski/ChromR/blob/master/docs/ex_gradient_prof.png">
@@ -74,7 +74,9 @@ runs = number of the runs.
 over = overage of mobile phase to keep the system secure (%).
 
 plot = plot the gradient profile.
-```r
+
+<u>Example:</u>
+``` r
 library(ChromR)
 
 gradientprof <- "/example/gradientprofile.csv"
@@ -82,14 +84,27 @@ gradientprof <- "/example/gradientprofile.csv"
 GradCalc(x = gradientprof, runs = 15, over = 15, plot = TRUE)
 ```
 
-
 ### Post-analyse functions
 
+<b>Files organizer:</b>
 
+x = path to the samplelist .csv file, format the metadata as below.
 
+<p align="left">
+<img src="https://github.com/ebruginski/ChromR/blob/master/docs/ex_samplelist.png">
+</p>
 
+filetype = extension of the files that you want to move.
 
+by = select the type of sorting, class or batch.
 
+remove = TRUE to remove the files from origin and FALSE to not remove.
 
+<u>Example:</u>
+``` r
+library(ChromR)
 
+samplelist <- "/example/samplelist.csv"
 
+FileOrganizer(x = samplelist, filetype = ".mzML", by= "class", remove = FALSE)
+```
