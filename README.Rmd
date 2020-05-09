@@ -15,7 +15,7 @@ output:
 
 ## Description 
 
-The ChromR package brings some functions to help analysts, Ph.D. students and technicians to plan and organize LC analyses. The functions are separated into 2 main sections, Pre-analyse and Post-analyse. In Pre-analyse, the functions will help to randomize the injections order,  calculation of the quantity of mobile phase and the spent time of batches. The Post-analyse functions will help to organize the obtained files according to their respective batches or classes, avoiding human error.
+The ChromR package brings some functions to help analysts, Ph.D. students and technicians to plan and organize LC analyses. The functions are separated into 2 main sections, Pre-analysis and Post-analysis. In Pre-analyse, the functions will help to randomize the injections order,  calculation of the quantity of mobile phase and the spent time of batches. The Post-analyse functions will help to organize the obtained files according to their respective batches or classes, avoiding human error.
 
 ## Getting Started
 
@@ -34,7 +34,7 @@ install_github("ebruginski/ChromR")
 ```
 ## Overview
 
-### Pre-analyse functions
+### Pre-analysis functions
 
 <b>Sample Randomization:</b> 
 
@@ -44,7 +44,7 @@ gnumber = number of groups in the sample, need to be between 2 and 6.
 
 gnames = names of the groups, need to be the same of the input data frame.
 
-<sub>Example:</sub>
+<u>Example:</u>
 ```R
 library(ChromR)
 
@@ -59,4 +59,4 @@ rsamplelist <- SampleRand(x = samplelist, gnumber = 2, gnames = c("disease", "he
 <b>Mobile phase and time calculation:</b>
 
 
-### Post-analyse functions
+### Post-analysis functions
