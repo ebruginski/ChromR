@@ -42,9 +42,9 @@ Overview
 x = The dataframe for this function need to have: first column as
 samples id and the second column as sample class.
 
-gnumber = number of groups in the sample, need to be between 2 and 6.
+gnumber = number of classes in the sample, need to be between 2 and 6.
 
-gnames = names of the groups, need to be the same of the input data
+gnames = names of the class, need to be the same of the input data
 frame.
 
 <u>Example:</u>
