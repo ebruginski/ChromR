@@ -104,6 +104,9 @@ remove = TRUE to remove the files from origin and FALSE to not remove.
 ``` r
 library(ChromR)
 
+## Set the working directory where the files are
+setwd("/example")
+
 samplelist <- "/example/samplelist.csv"
 
 FileOrganizer(x = samplelist, filetype = ".mzML", by= "class", remove = FALSE)
