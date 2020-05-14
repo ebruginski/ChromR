@@ -29,7 +29,7 @@ install.packages(c("devtools","lubridate", "ggplot2", "progress"))
 ### b) Install the package
 
 ``` r
-install_github("ebruginski/ChromR")
+devtools::install_github("ebruginski/ChromR")
 ```
 
 Overview
