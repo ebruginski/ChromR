@@ -48,7 +48,7 @@ FileOrganizer <- function(x,
   pb <-
     progress_bar$new(
       format = "Files Transfering [:bar] :percent Time left: :eta",
-      total = length(snames),
+      total = length(dnames),
       clear = T,
       width = 100
     )
