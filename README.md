@@ -10,10 +10,10 @@ Description
 
 The ChromR package brings some functions to help analysts,
 Ph.D. students and technicians to plan and organize LC analyses. The
-functions are separated into 2 main sections, Pre-analyse and
-Post-analyse. In Pre-analyse, the functions will help to randomize the
+functions are separated into 2 main sections, Pre-analysis and
+Post-analysis. In Pre-analysis, the functions will help to randomize the
 injections order, calculation of the quantity of mobile phase and the
-spent time of batches. The Post-analyse functions will help to organize
+spent time of batches. The Post-analysis functions will help to organize
 the obtained files according to their respective batches or classes,
 avoiding human error.
 
@@ -29,22 +29,22 @@ install.packages(c("devtools","lubridate", "ggplot2", "progress"))
 ### b) Install the package
 
 ``` r
-install_github("ebruginski/ChromR")
+devtools::install_github("ebruginski/ChromR")
 ```
 
 Overview
 --------
 
-### Pre-analyse functions
+### Pre-analysis functions
 
 <b>Sample Randomization:</b>
 
 x = The dataframe for this function need to have: first column as
 samples id and the second column as sample class.
 
-gnumber = number of groups in the sample, need to be between 2 and 6.
+gnumber = number of classes in the sample, need to be between 2 and 6.
 
-gnames = names of the groups, need to be the same of the input data
+gnames = names of the class, need to be the same of the input data
 frame.
 
 <u>Example:</u>
@@ -63,7 +63,7 @@ rsamplelist <- SampleRand(x = samplelist, gnumber = 2, gnames = c("disease", "he
 
 <b>Mobile phase and time calculation:</b>
 
-x = path to the gradient profile .csv file, format the profile as below.
+x = path to the gradient profile .csv file, format the header as below.
 
 <p align="left">
 <img src="https://github.com/ebruginski/ChromR/blob/master/docs/ex_gradient_prof.png">
@@ -84,11 +84,11 @@ gradientprof <- "/example/gradientprofile.csv"
 GradCalc(x = gradientprof, runs = 15, over = 15, plot = TRUE)
 ```
 
-### Post-analyse functions
+### Post-analysis functions
 
 <b>Files organizer:</b>
 
-x = path to the samplelist .csv file, format the metadata as below.
+x = path to the samplelist .csv file, format the header metadata as below.
 
 <p align="left">
 <img src="https://github.com/ebruginski/ChromR/blob/master/docs/ex_samplelist.png">
@@ -103,6 +103,9 @@ remove = TRUE to remove the files from origin and FALSE to not remove.
 <u>Example:</u>
 ``` r
 library(ChromR)
+
+## Set the working directory where the files are
+setwd("/example")
 
 samplelist <- "/example/samplelist.csv"
 
