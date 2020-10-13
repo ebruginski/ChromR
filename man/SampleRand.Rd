@@ -21,7 +21,7 @@ Plot the LC gradient profile.
 }
 \examples{
 \dontrun{
-SampleRand (x, gnumber = 3, gnames = c("g1", "g2", "g3"))
+SampleRand(x, gnumber = 3, gnames = c("g1", "g2", "g3"))
 }
 }
 \author{

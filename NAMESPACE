@@ -2,6 +2,7 @@
 
 export(CalcGrad)
 export(FileOrganizer)
+export(FormatPeakList)
 export(PlotGrad)
 export(SampleRand)
 import(progress)
@@ -18,3 +19,4 @@ importFrom(lubridate,seconds_to_period)
 importFrom(stats,na.omit)
 importFrom(utils,read.csv)
 importFrom(utils,tail)
+importFrom(utils,write.csv)

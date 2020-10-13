@@ -9,13 +9,18 @@ Description
 -----------
 
 The ChromR package brings some functions to help analysts,
-Ph.D. students and technicians to plan and organize LC analyses. The
+Ph.D. students and technicians to plan and organize LC analyses. The
 functions are separated into 2 main sections, Pre-analysis and
 Post-analysis. In Pre-analysis, the functions will help to randomize the
 injections order, calculation of the quantity of mobile phase and the
 spent time of batches. The Post-analysis functions will help to organize
 the obtained files according to their respective batches or classes,
 avoiding human error.
+
+Updates
+-----------
+
+13/10/2020 - New function to format peaklist for batch correction.
 
 Getting Started
 ---------------
