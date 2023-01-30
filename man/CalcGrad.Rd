@@ -2,28 +2,26 @@
 % Please edit documentation in R/CalcGrad.R
 \name{CalcGrad}
 \alias{CalcGrad}
-\title{Gradient mobile phase calculation}
+\title{Cálculo do volume de fase móvel e tempo total de um batch cromatográfico}
 \usage{
-CalcGrad(x, runs, over = 15, plot = TRUE)
+CalcGrad(x, runs, over = 15)
 }
 \arguments{
-\item{x}{Datapath character, gradient profile in .csv format}
+\item{x}{Datapath character, arquivo em .csv do gradiente.}
 
-\item{runs}{Numeric, number of chromatographic runs in the batch.}
+\item{runs}{Numeric, número de corridas no batch.}
 
-\item{over}{Numeric, overage of mobile phase to keep the system secure. The default value is 15\%. Need to be set according with your system.}
-
-\item{plot}{Logical, plot the gradient profile, TRUE by default.}
+\item{over}{Numeric, limite de segurança para o sistema cromatográfico não secar. Valor padrão é 15%.}
 }
 \value{
-a list with the total batch time and the amount, in ml, of solvents A and B.
+uma lista com o volume total de cada fase móvel em mL (A e B) e tempo total
 }
 \description{
-Calculate the volume of A and B mobile phases on a LC gradient.
+Cálculo do volume de fase móvel e tempo total de um batch cromatográfico.
 }
 \examples{
 \dontrun{
-GradCalc(x, runs = 15, over = 15, plot = TRUE)
+GradCalc(x, runs = 15, over = 15)
 }
 }
 \author{
